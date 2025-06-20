@@ -1,13 +1,13 @@
-# Basic Chatbot
+# BasicChatbot
 
 A Streamlit-based chatbot application that leverages LangGraph and LLMs (Large Language Models) to build a stateful, agentic AI chatbot. The app is modular, allowing for easy extension to more use cases and LLM providers.
 
 ## Features
 
 - **Streamlit UI**: User-friendly interface for interacting with the chatbot.
-- **LLM Integration**: Supports Groq LLMs (Llama3, Gemma2) via API key.
+- **LLM Integration**: Supports Groq LLMs (Llama3, Gemma2) via API key. Easily select LLM, model, and use case from the sidebar.
 - **LangGraph**: Uses LangGraph to build and manage the chatbot's stateful conversation flow.
-- **Configurable**: Easily select LLM, model, and use case from the sidebar.
+- **Configurable**: UI and model options are managed via configuration files for easy extensibility.
 
 ## How It Works
 
@@ -42,6 +42,17 @@ BasicChatbot/
                 └── display_result.py
 ```
 
+## Main Components
+
+- **app.py**: Entry point for the Streamlit app. Runs the main application loader.
+- **main.py**: Orchestrates UI, LLM setup, graph construction, and result display.
+- **ui/streamlitui/loadui.py**: Handles sidebar UI for LLM, model, and use case selection, and API key input.
+- **ui/streamlitui/display_result.py**: Streams and displays chat messages in the UI.
+- **LLMS/groqllm.py**: Integrates Groq LLMs, handling model and API key setup.
+- **graph/graph_builder.py**: Builds the LangGraph state graph for the chatbot.
+- **nodes/basic_chatbot_node.py**: Defines the chatbot node logic for processing messages.
+- **ui/uiconfigfile.py & uiconfigfile.ini**: Manage UI and model configuration options.
+
 ## Setup Instructions
 
 1. **Clone the Repository**
@@ -61,15 +72,18 @@ BasicChatbot/
 
 3. **Obtain a Groq API Key**
 
-   - Sign up at [Groq Console](https://console.groq.com/keys) and generate an API key.
+   - Sign up at **[Groq Console](https://console.groq.com/keys)** and generate an API key.
 
-4. **Run the Application**
+4. **Obtain a Tavily API Key**
+   - Sign up at **[Tavily](https://app.tavily.com/home)** and generate an API key
+
+5. **Run the Application**
 
    ```bash
    streamlit run app.py
    ```
 
-5. **Using the App**
+6. **Using the App**
 
    - In the sidebar, select:
      - LLM: Groq
